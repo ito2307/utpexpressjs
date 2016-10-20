@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+//agregado
 var bodyParser = require('body-parser');
 var engine = require('ejs-mate');
 
@@ -10,6 +11,9 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+// instruct the app to use the `bodyParser()` middleware for all routes
+app.use(bodyParser());
 
 // view engine setup
 app.engine('ejs', engine);
@@ -19,17 +23,16 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-// app.use(app.router);
-// app.use(require('stylus').middleware(__dirname + '/public'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
 app.use('/', routes);
 app.use('/users', users);
-// app.use('/contact', index);
-// app.use('/about', index);
+
+
 
 // Handle 404
   app.use(function(req, res) {

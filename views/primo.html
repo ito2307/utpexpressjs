@@ -1,0 +1,38 @@
+primo
+
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+	form
+		input#numero(type='number',required,min="0")
+		input(type='submit', onclick='primos()', value='Enviar')
+	script.
+		function primos(){
+		var n = document.getElementById('numero').value;
+		var varCadena = '';
+		var j;
+		var num = 1;
+		var primeCount = 0;
+			for(j=2; j <= n; j++)
+			{
+			    num++;
+			    primeCount = 0;
+			    for(var i = 1; i <= num; i++)
+			    {
+
+			        if(num % i == 0)
+			        {
+			            primeCount++;
+			        }
+			    }
+			    if(primeCount == 2)
+			     {
+			        var k = j.toString();
+					varCadena = varCadena.concat(',');
+					varCadena = varCadena.concat(k);
+			    }
+			}
+		alert(varCadena);
+		}
