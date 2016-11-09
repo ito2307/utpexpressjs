@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var engine = require('ejs-mate');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var estudiante = require('./routes/estudiante');
 
 var app = express();
 
@@ -30,7 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/estudiante', estudiante);
+
+
 
 
 

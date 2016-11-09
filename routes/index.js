@@ -25,4 +25,5 @@ router.get('/primos', function(req, res, next) {
 	res.render('primos.jade', { title: 'Primos' });
 });
 
+
 module.exports = router;
